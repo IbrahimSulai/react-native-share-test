@@ -118,30 +118,12 @@ const App = () => {
     }
   };
 
-  shareSingleImageFacebook = () => {
+  shareSingleImageBase64 = (platform) => {
     let shareOptions = {
       url: images.image1
     };
     Share.shareSingle(Object.assign(shareOptions, {
-      "social": "facebook"
-    }));
-  }
-
-  shareSingleImageTwitter = () => {
-    let shareOptions = {
-      url: images.image1
-    };
-    Share.shareSingle(Object.assign(shareOptions, {
-      "social": "twitter"
-    }));
-  }
-
-  shareSingleImageInstagram = () => {
-    let shareOptions = {
-      url: images.image1
-    };
-    Share.shareSingle(Object.assign(shareOptions, {
-      "social": "instagram"
+      "social": platform
     }));
   }
 
@@ -159,13 +141,13 @@ const App = () => {
           <Button onPress={shareEmailImage} title="Share Social: Email" />
         </View>
         <View style={styles.button}>
-          <Button onPress={() => this.shareSingleImageFacebook()} title="Share Single Image: Facebook" />
+          <Button onPress={() => this.shareSingleImageBase64("facebook")} title="Share Single Image: Facebook" />
         </View>
         <View style={styles.button}>
-          <Button onPress={() => this.shareSingleImageTwitter()} title="Share Single Image: Twitter" />
+          <Button onPress={() => this.shareSingleImageBase64("twitter")} title="Share Single Image: Twitter" />
         </View>
         <View style={styles.button}>
-          <Button onPress={() => this.shareSingleImageInstagram()} title="Share Single Image: Instagram" />
+          <Button onPress={() => this.shareSingleImageBase64("instagram")} title="Share Single Image: Instagram" />
         </View>
         {Platform.OS === 'android' && (
           <View style={styles.searchPackageContainer}>
